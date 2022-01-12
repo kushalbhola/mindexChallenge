@@ -34,10 +34,10 @@ namespace code_challenge.Tests.Integration
         public void GetEmployeeReportingStructureByIdSuccess()
         {
             // Arrange
-            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+            var EmployeeID = "16a596ae-edd3-4847-99fe-c4518e82c86f";
 
             // Execute
-            var getRequestTask = _httpClient.GetAsync($"api/reporting/{employeeId}");
+            var getRequestTask = _httpClient.GetAsync($"api/reporting/{EmployeeID}");
             var response = getRequestTask.Result;
 
             // Assert
@@ -49,10 +49,10 @@ namespace code_challenge.Tests.Integration
         public void GetEmployeeReportingStructureByIdFailure()
         {
             // Arrange
-            var employeeId = "TestEmployeeId";
+            var EmployeeID = "TestEmployeeID";
 
             // Execute
-            var getRequestTask = _httpClient.GetAsync($"api/reporting/{employeeId}");
+            var getRequestTask = _httpClient.GetAsync($"api/reporting/{EmployeeID}");
             var response = getRequestTask.Result;
 
             // Assert

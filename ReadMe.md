@@ -78,10 +78,17 @@ This new type should have a new REST endpoint created for it. This new endpoint 
 the fully filled out ReportingStructure for the specified employeeId. The values should be computed on the fly and will 
 not be persisted.
 
+### Task 1 test: 
+Start the application adn hit this url
+http://localhost:8080/api/reporting/16a596ae-edd3-4847-99fe-c4518e82c86f
+
 ### Task 2
 Create a new type, Compensation. A Compensation has the following fields: employee, salary, and effectiveDate. Create 
 two new Compensation REST endpoints. One to create and one to read by employeeId. These should persist and query the 
 Compensation from the persistence layer.
+
+### Task 2 test: 
+For this task I have just added a blank compensation seed file. If you run all the unit tests, it will first run a test which will create a compensation record and then it will run the test to retrieve the same.
 
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by Github and Bitbucket.
