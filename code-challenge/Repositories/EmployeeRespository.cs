@@ -27,9 +27,13 @@ namespace challenge.Repositories
             return employee;
         }
 
+        //updated this method and added enumerable to include direct reports. This is necessary for the implementation of GetEmployeeReportingStructureById
+
         public Employee GetById(string id)
         {
-            return _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            //return _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            var employee = _employeeContext.Employees.AsEnumerable().Where(emp => emp.EmployeeId == id);
+            return employee.SingleOrDefault();
         }
 
         public Task SaveAsync()

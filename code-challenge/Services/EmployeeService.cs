@@ -59,5 +59,44 @@ namespace challenge.Services
 
             return newEmployee;
         }
+
+        /// <summary>
+        /// this method return all the direct and indirect reportee under an empoyee. 
+        /// </summary>
+        /// <returns>total number of reports</returns>
+        public ReportingStructure GetEmployeeReportingStructureById(string id)
+        {
+            var employee = GetById(id);
+            ReportingStructure reportingStructure = new ReportingStructure();
+            if (employee != null)
+            {
+                reportingStructure.Employee = employee;
+                reportingStructure.NumberOfReports = GetEmployeeReportingStructureByIdHelper(employee);
+            }
+            return reportingStructure;
+        }
+        /// <summary>
+        /// Helper method uses depth first search to recursively find all the employees who directly or indirectly report to the employee passed in 
+        /// </summary>
+        /// <returns>total number of reports</returns>
+        int GetEmployeeReportingStructureByIdHelper(Employee employee)
+        {
+            Stack<Employee> employeeStack = new Stack<Employee>();
+            employeeStack.Push(employee);
+            var count = 0;
+            while (employeeStack.Count != 0)
+            {
+                Employee currentEmp = employeeStack.Pop();
+                if (currentEmp != null && (currentEmp.DirectReports != null))
+                {
+                    foreach (Employee directReport in currentEmp.DirectReports)
+                    {
+                        count++;
+                        employeeStack.Push(directReport);
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
