@@ -91,8 +91,11 @@ namespace challenge.Services
                 {
                     foreach (Employee directReport in currentEmp.DirectReports)
                     {
-                        count++;
-                        employeeStack.Push(directReport);
+                        if(directReport.EmployeeId != employee.EmployeeId)
+                        {
+                            count++;
+                            employeeStack.Push(directReport);
+                        }
                     }
                 }
             }
